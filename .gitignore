@@ -1,0 +1,38 @@
+# ---- Source data: patient-level, never commit ----
+data/*
+!data/.gitignore
+*.csv
+*.sql
+*.db
+*.sqlite
+*.sqlite3
+*.parquet
+*.xlsx
+
+# ---- Secrets ----
+.env
+*.key
+*.pem
+secrets*.json
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+env/
+
+# ---- Jupyter ----
+.ipynb_checkpoints/
+.virtual_documents/
+
+# ---- OS / editor ----
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp

@@ -1,0 +1,690 @@
+{
+ "dictionary_mismatch": [
+  {
+   "table": "encounters",
+   "in_dictionary_not_in_csv": [],
+   "in_csv_not_in_dictionary": []
+  },
+  {
+   "table": "organizations",
+   "in_dictionary_not_in_csv": [],
+   "in_csv_not_in_dictionary": []
+  },
+  {
+   "table": "patients",
+   "in_dictionary_not_in_csv": [
+    "middle",
+    "fips county code"
+   ],
+   "in_csv_not_in_dictionary": []
+  },
+  {
+   "table": "payers",
+   "in_dictionary_not_in_csv": [],
+   "in_csv_not_in_dictionary": []
+  },
+  {
+   "table": "procedures",
+   "in_dictionary_not_in_csv": [],
+   "in_csv_not_in_dictionary": []
+  }
+ ],
+ "profiles": [
+  {
+   "file": "encounters",
+   "rows": 27891,
+   "cols": 14,
+   "fully_duplicated_rows": 0,
+   "duplicate_keys": 0,
+   "columns_with_missing": {
+    "REASONCODE": "19,541 (70.1%)",
+    "REASONDESCRIPTION": "19,541 (70.1%)"
+   }
+  },
+  {
+   "file": "procedures",
+   "rows": 47701,
+   "cols": 9,
+   "fully_duplicated_rows": 0,
+   "duplicate_keys": "n/a (no key)",
+   "columns_with_missing": {
+    "REASONCODE": "36,945 (77.5%)",
+    "REASONDESCRIPTION": "36,945 (77.5%)"
+   }
+  },
+  {
+   "file": "payers",
+   "rows": 10,
+   "cols": 7,
+   "fully_duplicated_rows": 0,
+   "duplicate_keys": 0,
+   "columns_with_missing": {
+    "ADDRESS": "1 (10.0%)",
+    "CITY": "1 (10.0%)",
+    "STATE_HEADQUARTERED": "1 (10.0%)",
+    "ZIP": "1 (10.0%)",
+    "PHONE": "1 (10.0%)"
+   }
+  },
+  {
+   "file": "organizations",
+   "rows": 1,
+   "cols": 4,
+   "fully_duplicated_rows": 0,
+   "duplicate_keys": 0,
+   "columns_with_missing": {}
+  },
+  {
+   "file": "patients",
+   "rows": 974,
+   "cols": 5,
+   "fully_duplicated_rows": 0,
+   "duplicate_keys": 0,
+   "columns_with_missing": {
+    "DEATHDATE": "820 (84.2%)"
+   }
+  }
+ ],
+ "integrity": {
+  "encounters.PATIENT not in patients": 0,
+  "encounters.PAYER not in payers": 0,
+  "encounters.ORGANIZATION not in organizations": 0,
+  "procedures.ENCOUNTER not in encounters": 0,
+  "procedures.PATIENT != parent encounter's PATIENT": 0,
+  "distinct organizations in encounters": 1
+ },
+ "date_checks": {
+  "unparseable START": 0,
+  "unparseable STOP": 0,
+  "STOP before START": 0,
+  "first START": "2011-01-02 09:26:36+00:00",
+  "last START": "2022-02-05 20:27:36+00:00",
+  "encounters in 2022 (partial year)": 220,
+  "encounters in 2011": 1336
+ },
+ "duration_by_class": [
+  {
+   "ENCOUNTERCLASS": "wellness",
+   "count": 1931.0,
+   "mean": 0.25,
+   "std": 0.0,
+   "min": 0.25,
+   "50%": 0.25,
+   "90%": 0.25,
+   "99%": 0.25,
+   "max": 0.25
+  },
+  {
+   "ENCOUNTERCLASS": "ambulatory",
+   "count": 12537.0,
+   "mean": 9.48,
+   "std": 570.67,
+   "min": 0.25,
+   "50%": 0.25,
+   "90%": 3.07,
+   "99%": 3.9,
+   "max": 44930.0
+  },
+  {
+   "ENCOUNTERCLASS": "outpatient",
+   "count": 6300.0,
+   "mean": 5.88,
+   "std": 207.12,
+   "min": 0.25,
+   "50%": 0.25,
+   "90%": 0.25,
+   "99%": 1.04,
+   "max": 10704.0
+  },
+  {
+   "ENCOUNTERCLASS": "urgentcare",
+   "count": 3666.0,
+   "mean": 0.25,
+   "std": 0.0,
+   "min": 0.25,
+   "50%": 0.25,
+   "90%": 0.25,
+   "99%": 0.25,
+   "max": 0.25
+  },
+  {
+   "ENCOUNTERCLASS": "emergency",
+   "count": 2322.0,
+   "mean": 1.54,
+   "std": 14.93,
+   "min": 1.0,
+   "50%": 1.0,
+   "90%": 1.0,
+   "99%": 1.71,
+   "max": 589.0
+  },
+  {
+   "ENCOUNTERCLASS": "inpatient",
+   "count": 1135.0,
+   "mean": 36.84,
+   "std": 249.15,
+   "min": 24.0,
+   "50%": 24.0,
+   "90%": 24.0,
+   "99%": 220.39,
+   "max": 8250.0
+  }
+ ],
+ "cost_checks": {
+  "negative costs (any cost column)": 0,
+  "TOTAL_CLAIM_COST == 0": 89,
+  "TOTAL_CLAIM_COST < BASE_ENCOUNTER_COST": 89,
+  "PAYER_COVERAGE > TOTAL_CLAIM_COST": 0,
+  "PAYER_COVERAGE == 0": 13586
+ },
+ "reconciliation": {
+  "encounters with no procedure rows": 13221,
+  "total == base + procedures (\u00b1$1)": 13874,
+  "total > base + procedures (+$1; other line items)": 8801,
+  "total < base + procedures (-$1; unexplained)": 5216
+ },
+ "encounters_per_patient": {
+  "count": 974.0,
+  "mean": 28.6,
+  "std": 73.0,
+  "min": 1.0,
+  "25%": 4.0,
+  "50%": 14.0,
+  "75%": 28.0,
+  "max": 1381.0
+ },
+ "n_patients_with_encounters": 974,
+ "class_mix_pct": {
+  "wellness": 6.9,
+  "ambulatory": 45.0,
+  "outpatient": 22.6,
+  "urgentcare": 13.1,
+  "emergency": 8.3,
+  "inpatient": 4.1
+ },
+ "encounters_per_year": {
+  "2011": 1336,
+  "2012": 2106,
+  "2013": 2495,
+  "2014": 3885,
+  "2015": 2469,
+  "2016": 2451,
+  "2017": 2360,
+  "2018": 2292,
+  "2019": 2228,
+  "2020": 2519,
+  "2021": 3530,
+  "2022": 220
+ },
+ "cost_summary_by_class": [
+  {
+   "cls": "wellness",
+   "n": 1931.0,
+   "mean": 4260.71,
+   "median": 1231.44,
+   "p25": 853.36,
+   "p75": 1643.68,
+   "p95": 26823.52,
+   "max": 65633.22,
+   "skew": 2.88,
+   "share_of_total_$": 8.1
+  },
+  {
+   "cls": "ambulatory",
+   "n": 12537.0,
+   "mean": 2894.11,
+   "median": 573.98,
+   "p25": 142.58,
+   "p75": 1267.08,
+   "p95": 14071.71,
+   "max": 65318.86,
+   "skew": 4.96,
+   "share_of_total_$": 35.74
+  },
+  {
+   "cls": "outpatient",
+   "n": 6300.0,
+   "mean": 2237.3,
+   "median": 278.58,
+   "p25": 153.89,
+   "p75": 594.45,
+   "p95": 12973.98,
+   "max": 43321.62,
+   "skew": 3.81,
+   "share_of_total_$": 13.88
+  },
+  {
+   "cls": "urgentcare",
+   "n": 3666.0,
+   "mean": 6369.16,
+   "median": 142.58,
+   "p25": 142.58,
+   "p75": 8921.38,
+   "p95": 32378.4,
+   "max": 47998.67,
+   "skew": 1.58,
+   "share_of_total_$": 23.0
+  },
+  {
+   "cls": "emergency",
+   "n": 2322.0,
+   "mean": 4629.65,
+   "median": 146.18,
+   "p25": 146.18,
+   "p75": 4288.38,
+   "p95": 25894.47,
+   "max": 641882.7,
+   "skew": 27.53,
+   "share_of_total_$": 10.59
+  },
+  {
+   "cls": "inpatient",
+   "n": 1135.0,
+   "mean": 7761.35,
+   "median": 2355.59,
+   "p25": 313.96,
+   "p75": 14092.26,
+   "p95": 21184.36,
+   "max": 309748.16,
+   "skew": 11.64,
+   "share_of_total_$": 8.68
+  }
+ ],
+ "top1pct_cost_share": 0.1452,
+ "h1_kw": {
+  "H": 2025.1937917704752,
+  "p": 0.0,
+  "epsilon2": 0.07244732981066793,
+  "N": 27891
+ },
+ "h1_pairwise": [
+  {
+   "A": "wellness",
+   "B": "ambulatory",
+   "P(A>B)+0.5P(tie)": 0.71734,
+   "p_raw": 0.0,
+   "p_holm": 0.0,
+   "significant_5%": true
+  },
+  {
+   "A": "wellness",
+   "B": "outpatient",
+   "P(A>B)+0.5P(tie)": 0.79069,
+   "p_raw": 0.0,
+   "p_holm": 0.0,
+   "significant_5%": true
+  },
+  {
+   "A": "wellness",
+   "B": "urgentcare",
+   "P(A>B)+0.5P(tie)": 0.72104,
+   "p_raw": 0.0,
+   "p_holm": 0.0,
+   "significant_5%": true
+  },
+  {
+   "A": "wellness",
+   "B": "emergency",
+   "P(A>B)+0.5P(tie)": 0.72585,
+   "p_raw": 0.0,
+   "p_holm": 0.0,
+   "significant_5%": true
+  },
+  {
+   "A": "wellness",
+   "B": "inpatient",
+   "P(A>B)+0.5P(tie)": 0.43424,
+   "p_raw": 0.0,
+   "p_holm": 0.0,
+   "significant_5%": true
+  },
+  {
+   "A": "ambulatory",
+   "B": "outpatient",
+   "P(A>B)+0.5P(tie)": 0.54967,
+   "p_raw": 0.0,
+   "p_holm": 0.0,
+   "significant_5%": true
+  },
+  {
+   "A": "ambulatory",
+   "B": "urgentcare",
+   "P(A>B)+0.5P(tie)": 0.5439,
+   "p_raw": 0.0,
+   "p_holm": 0.0,
+   "significant_5%": true
+  },
+  {
+   "A": "ambulatory",
+   "B": "emergency",
+   "P(A>B)+0.5P(tie)": 0.503,
+   "p_raw": 0.64419,
+   "p_holm": 0.64419,
+   "significant_5%": false
+  },
+  {
+   "A": "ambulatory",
+   "B": "inpatient",
+   "P(A>B)+0.5P(tie)": 0.2645,
+   "p_raw": 0.0,
+   "p_holm": 0.0,
+   "significant_5%": true
+  },
+  {
+   "A": "outpatient",
+   "B": "urgentcare",
+   "P(A>B)+0.5P(tie)": 0.53852,
+   "p_raw": 0.0,
+   "p_holm": 0.0,
+   "significant_5%": true
+  },
+  {
+   "A": "outpatient",
+   "B": "emergency",
+   "P(A>B)+0.5P(tie)": 0.53652,
+   "p_raw": 0.0,
+   "p_holm": 0.0,
+   "significant_5%": true
+  },
+  {
+   "A": "outpatient",
+   "B": "inpatient",
+   "P(A>B)+0.5P(tie)": 0.24837,
+   "p_raw": 0.0,
+   "p_holm": 0.0,
+   "significant_5%": true
+  },
+  {
+   "A": "urgentcare",
+   "B": "emergency",
+   "P(A>B)+0.5P(tie)": 0.30776,
+   "p_raw": 0.0,
+   "p_holm": 0.0,
+   "significant_5%": true
+  },
+  {
+   "A": "urgentcare",
+   "B": "inpatient",
+   "P(A>B)+0.5P(tie)": 0.2786,
+   "p_raw": 0.0,
+   "p_holm": 0.0,
+   "significant_5%": true
+  },
+  {
+   "A": "emergency",
+   "B": "inpatient",
+   "P(A>B)+0.5P(tie)": 0.25987,
+   "p_raw": 0.0,
+   "p_holm": 0.0,
+   "significant_5%": true
+  }
+ ],
+ "h1_cluster_ci": [
+  {
+   "class": "wellness",
+   "median": 1231.4,
+   "ci_low": 1186.9,
+   "ci_high": 1285.5
+  },
+  {
+   "class": "ambulatory",
+   "median": 574.0,
+   "ci_low": 234.7,
+   "ci_high": 787.5
+  },
+  {
+   "class": "outpatient",
+   "median": 278.6,
+   "ci_low": 278.6,
+   "ci_high": 278.6
+  },
+  {
+   "class": "urgentcare",
+   "median": 142.6,
+   "ci_low": 142.6,
+   "ci_high": 278.6
+  },
+  {
+   "class": "emergency",
+   "median": 146.2,
+   "ci_low": 146.2,
+   "ci_high": 160.9
+  },
+  {
+   "class": "inpatient",
+   "median": 2355.6,
+   "ci_low": 1186.9,
+   "ci_high": 10829.7
+  }
+ ],
+ "h1_patient_level": {
+  "H": 363.04154757670665,
+  "p": 2.7218659010518262e-76,
+  "n": 2393
+ },
+ "h2_spearman": [
+  {
+   "subset": "pooled (4 informative classes)",
+   "n": 22294,
+   "rho": 0.41838,
+   "p_value": 0.0,
+   "ci95_low": 0.3237,
+   "ci95_high": 0.48295,
+   "n_distinct_durations": 1777
+  },
+  {
+   "subset": "ambulatory",
+   "n": 12537,
+   "rho": 0.47664,
+   "p_value": 0.0,
+   "ci95_low": 0.39413,
+   "ci95_high": 0.54223,
+   "n_distinct_durations": 1379
+  },
+  {
+   "subset": "outpatient",
+   "n": 6300,
+   "rho": 0.39252,
+   "p_value": 0.0,
+   "ci95_low": 0.3345,
+   "ci95_high": 0.45383,
+   "n_distinct_durations": 445
+  },
+  {
+   "subset": "emergency",
+   "n": 2322,
+   "rho": 0.16589,
+   "p_value": 0.0,
+   "ci95_low": 0.07333,
+   "ci95_high": 0.24305,
+   "n_distinct_durations": 38
+  },
+  {
+   "subset": "inpatient",
+   "n": 1135,
+   "rho": 0.17341,
+   "p_value": 0.0,
+   "ci95_low": 0.06334,
+   "ci95_high": 0.27404,
+   "n_distinct_durations": 59
+  }
+ ],
+ "h3": {
+  "all": {
+   "chi2": 381.13236126022707,
+   "p": 3.4514835372907744e-80,
+   "V": 0.11689767403825917
+  },
+  "insured": {
+   "chi2": 797.2595773021907,
+   "p": 4.530374099769265e-170,
+   "V": 0.20439260018038513
+  },
+  "table": [
+   {
+    "cls": "wellness",
+    "n": 1931,
+    "zero_cov_%_all": 41.067,
+    "uninsured_%": 17.452,
+    "zero_cov_%_insured_only": 28.607,
+    "median_coverage_ratio_if_cov>0": 0.798
+   },
+   {
+    "cls": "ambulatory",
+    "n": 12537,
+    "zero_cov_%_all": 51.87,
+    "uninsured_%": 35.519,
+    "zero_cov_%_insured_only": 25.359,
+    "median_coverage_ratio_if_cov>0": 0.664
+   },
+   {
+    "cls": "outpatient",
+    "n": 6300,
+    "zero_cov_%_all": 52.413,
+    "uninsured_%": 25.889,
+    "zero_cov_%_insured_only": 35.789,
+    "median_coverage_ratio_if_cov>0": 0.548
+   },
+   {
+    "cls": "urgentcare",
+    "n": 3666,
+    "zero_cov_%_all": 45.772,
+    "uninsured_%": 40.889,
+    "zero_cov_%_insured_only": 8.26,
+    "median_coverage_ratio_if_cov>0": 0.576
+   },
+   {
+    "cls": "emergency",
+    "n": 2322,
+    "zero_cov_%_all": 32.687,
+    "uninsured_%": 23.902,
+    "zero_cov_%_insured_only": 11.545,
+    "median_coverage_ratio_if_cov>0": 0.581
+   },
+   {
+    "cls": "inpatient",
+    "n": 1135,
+    "zero_cov_%_all": 48.546,
+    "uninsured_%": 29.251,
+    "zero_cov_%_insured_only": 27.273,
+    "median_coverage_ratio_if_cov>0": 0.786
+   }
+  ],
+  "overall_zero_cov": 13586,
+  "overall_zero_cov_pct": 48.7,
+  "uninsured_n": 8807,
+  "zero_cov_insured_pct": 25.0
+ },
+ "ols": {
+  "n": 27891,
+  "clusters": 974,
+  "r2": 0.19489920663878424,
+  "coefs": [
+   {
+    "term": "const",
+    "coef": 7.81789,
+    "se": 0.32088,
+    "t": 24.36373,
+    "p": 0.0,
+    "pct_diff_vs_ambulatory": NaN
+   },
+   {
+    "term": "emergency",
+    "coef": 0.07724,
+    "se": 0.29593,
+    "t": 0.26101,
+    "p": 0.79414,
+    "pct_diff_vs_ambulatory": 8.03005
+   },
+   {
+    "term": "inpatient",
+    "coef": -0.85423,
+    "se": 0.50325,
+    "t": -1.69742,
+    "p": 0.08994,
+    "pct_diff_vs_ambulatory": -57.43895
+   },
+   {
+    "term": "outpatient",
+    "coef": -0.20054,
+    "se": 0.12745,
+    "t": -1.57347,
+    "p": 0.11593,
+    "pct_diff_vs_ambulatory": -18.17132
+   },
+   {
+    "term": "urgentcare",
+    "coef": 0.50581,
+    "se": 0.33913,
+    "t": 1.49149,
+    "p": 0.13616,
+    "pct_diff_vs_ambulatory": 65.83215
+   },
+   {
+    "term": "wellness",
+    "coef": 0.92621,
+    "se": 0.12393,
+    "t": 7.47366,
+    "p": 0.0,
+    "pct_diff_vs_ambulatory": 152.49101
+   },
+   {
+    "term": "ln_duration_h",
+    "coef": 0.7523,
+    "se": 0.15188,
+    "t": 4.95338,
+    "p": 0.0,
+    "pct_diff_vs_ambulatory": 112.18673
+   },
+   {
+    "term": "n_procedures",
+    "coef": 0.09868,
+    "se": 0.01695,
+    "t": 5.82172,
+    "p": 0.0,
+    "pct_diff_vs_ambulatory": 10.37113
+   },
+   {
+    "term": "age_per_10y",
+    "coef": -0.1989,
+    "se": 0.02536,
+    "t": -7.84202,
+    "p": 0.0,
+    "pct_diff_vs_ambulatory": -18.03717
+   },
+   {
+    "term": "insured",
+    "coef": -0.80058,
+    "se": 0.22068,
+    "t": -3.62772,
+    "p": 0.0003,
+    "pct_diff_vs_ambulatory": -55.09325
+   },
+   {
+    "term": "female",
+    "coef": -0.06472,
+    "se": 0.15149,
+    "t": -0.42721,
+    "p": 0.66932,
+    "pct_diff_vs_ambulatory": -6.26666
+   }
+  ],
+  "r2_excl_zero": 0.20857004498532772,
+  "class_coefs_excl_zero": {
+   "wellness": 1.116,
+   "outpatient": -0.198,
+   "urgentcare": 0.492,
+   "emergency": 0.087,
+   "inpatient": -0.648
+  }
+ },
+ "validation": {
+  "SQL counts & means match pandas": true,
+  "SQL zero-coverage count matches": true,
+  "Hand-coded Kruskal-Wallis H matches SciPy": true,
+  "Spearman equals Pearson-on-ranks": true,
+  "Class counts/shares reconcile to total": true,
+  "OLS matches lstsq": true
+ },
+ "n_encounters": 27891
+}
