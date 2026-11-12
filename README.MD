@@ -1,6 +1,6 @@
 # Hospital Operations: Statistical Investigation & Insight Discovery
 
-**AnalystLab Africa · Charity Nduati
+**AnalystLab Africa
 
 > **Research question:** How do recorded total claim costs vary across encounter classes, and are the differences associated with encounter duration and payer coverage?
 
@@ -84,5 +84,4 @@ Python · pandas · NumPy · SciPy · Matplotlib · Seaborn · Jupyter
 
 ## Author
 
-<Your name> · AnalystLab Africa Experience Lab, Week 3
-[LinkedIn](<your-linkedin-url>) · [GitHub](<your-github-url>) · #AnalystLabAfrica
+Charity Nduati· Data Science· #AnalystLabAfrica
